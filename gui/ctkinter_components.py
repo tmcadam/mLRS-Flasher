@@ -1,3 +1,13 @@
+#************************************************************
+# Copyright (c) MLRS project
+# GPL3
+# https://www.gnu.org/licenses/gpl-3.0.de.html
+# OlliW @ www.olliw.eu
+#************************************************************
+# mLRS Flasher Desktop App
+# 30. Nov. 2025 001
+#************************************************************
+
 import customtkinter as ctk
 from api.espFlash import  find_serial_ports_esp_tx_devices
 from api.helpers import find_serial_ports, find_serial_ports_usbttl_devices

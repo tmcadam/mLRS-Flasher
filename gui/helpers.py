@@ -1,3 +1,13 @@
+#************************************************************
+# Copyright (c) MLRS project
+# GPL3
+# https://www.gnu.org/licenses/gpl-3.0.de.html
+# OlliW @ www.olliw.eu
+#************************************************************
+# mLRS Flasher Desktop App
+# 30. Nov. 2025 001
+#************************************************************
+
 import sys, os
 
 def resource_path(relative):
