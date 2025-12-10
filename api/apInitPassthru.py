@@ -94,15 +94,15 @@ def find_ardupilot_serial_ports():
 
 def do_msg(msg):
     print(msg)
-    print('Press Enter to continue')
-    input()
+    #print('Press Enter to continue')
+    #input()
 
 
 def do_error(msg):
     print(msg)
-    print('Press Enter to continue')
-    input()
-    sys.exit(1)
+    #print('Press Enter to continue')
+    #input()
+    #sys.exit(1)
 
 #find_ardupilot_serial_ports()
 #exit()
@@ -194,7 +194,7 @@ def ardupilot_find_serialx_baud(link, serialx):
         baud = 115200
     elif baud == 230:
         baud = 230400
-    #print(baud)
+    print(baud)
     return baud
 
 
@@ -223,7 +223,7 @@ def ardupilot_set_scripting(link, serialx):
     mavparm.MAVParmDict().mavset(link, param_str, 28)
     time.sleep(0.5) # wait a bit
     link.close()
-    do_msg(
+    print(
         '\r\nPlease unplug USB and hold receiver boot button down while plugging in USB.\r\n' +
         'Wait until USB is re-enumerated and flight controller has booted up (typically 10-20 secs).')
 
@@ -335,12 +335,12 @@ def mlrs_open_passthrough(comport, baudrate, serialx, options=[]):
     print('------------------------------------------------------------')
     link = ardupilot_connect(apport, baudrate)
     if not link:
-        do_error('Sorry, something went wrong.')
+        do_error("Sorry, couldn't link Ardupilot.")
     print('------------------------------------------------------------')
     receiver_baud = ardupilot_find_serialx_baud(link, serialx)
     if not receiver_baud:
         link.close()
-        do_error('Sorry, something went wrong.')
+        do_error("Sorry, couldn't find receiver baudrate.")
     if baudrate != receiver_baud:
         print('Receiver baudrate is ', receiver_baud, ', change link to it')
         link.close()

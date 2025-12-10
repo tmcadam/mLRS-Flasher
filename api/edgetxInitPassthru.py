@@ -9,7 +9,7 @@
 #************************************************************
 # Comment: does not work with OpenTx
 
-import os, sys, time
+import sys, time
 import argparse
 import serial
 
