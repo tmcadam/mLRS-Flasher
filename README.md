@@ -29,7 +29,7 @@ mLRSFlasher is based on Python, and thus needs a full Python3 installation on yo
 
 TBD
 
-## Dev Instructions ##
+## Developer Instructions ##
 
 ### Windows ###
 
@@ -37,7 +37,8 @@ TBD
   - Create a virtual environment in the repo `python.exe -m venv venv`
   - Activate the virtual environment `venv\Scripts\activate.bat`
   - Install dependencies `pip install -r requirements.txt`
-  - Run `build.bat` . The output will be in the `dist` folder
+  - Run `build.bat` . The output will be in the `dist` folder, or...
+  - Run `pyinstaller windows_exe.spec` or `pyinstaller windows_folder.spec`
 
 ## Disclaimer ##
 
