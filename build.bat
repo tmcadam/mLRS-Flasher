@@ -4,6 +4,7 @@ setlocal
 echo Building executable with PyInstaller...
 pyinstaller mLRS_Flasher.py ^
     --noconsole ^
+    --onefile ^
     --hidden-import=pymavlink ^
     --hidden-import=pymavlink.mavutil ^
     --hidden-import=pymavlink.dialects.v20.common ^
@@ -12,7 +13,8 @@ pyinstaller mLRS_Flasher.py ^
     --add-data "assets\*;assets" ^
     --add-data "thirdparty\stm32cubeprogrammer\win*;stm32cubeprogrammer" ^
     --icon "assets\mLRS_logo_round.ico" ^
-    --name "mLRS_Flasher"
+    --name "mLRS_Flasher" ^
+    --clean
 
 
 echo.
