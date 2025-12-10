@@ -9,7 +9,7 @@ Link to the [mLRS project](https://github.com/olliw42/mLRS).
 
 ### Windows ###
 
-mLRSFlasher is based on Python, and thus needs a full Python3 installation on your system. Not very Win-like, we know, and we appologize for this. 
+mLRSFlasher is based on Python, and thus needs a full Python3 installation on your system. Not very Win-like, we know, and we appologize for this.
 
 - Install Python3 on your system, if you don't yet have it. Ensure that Python is in the PATH (the usual Python installation tutorials tell how to check that).
 - Download the github repo and ensure you have unpacked it if you downloaded it as zip.
@@ -29,6 +29,15 @@ mLRSFlasher is based on Python, and thus needs a full Python3 installation on yo
 
 TBD
 
+## Dev Instructions ##
+
+### Windows ###
+
+  - Install Python and make sure available on path.
+  - Create a virtual environment in the repo `python.exe -m venv venv`
+  - Activate the virtual environment `venv\Scripts\activate.bat`
+  - Install dependencies `pip install -r requirements.txt`
+  - Run `build.bat` . The output will be in the `dist` folder
 
 ## Disclaimer ##
 
