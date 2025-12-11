@@ -215,17 +215,17 @@ def flashEspToolProgrammer(programmer, firmware, comport, baudrate):
     if f:
         serialx_no = f.group(1)
 
-    if os_system_run_as_script():
-        #print('run as script file')
-        if 'appassthru' in programmer:
-            #flash_esptool_appassthru_win_as_script(programmer, serialx_no, firmware)
-            flash_esptool_appassthru(programmer, serialx_no, firmware)
+    # if os_system_run_as_script():
+    #     #print('run as script file')
+    #     if 'appassthru' in programmer:
+    #         #flash_esptool_appassthru_win_as_script(programmer, serialx_no, firmware)
+    #         flash_esptool_appassthru(programmer, serialx_no, firmware)
 
-        else:
-            #flash_esptool_win_as_script(programmer, firmware, comport, baudrate)
-            flash_esptool(programmer, firmware, comport, baudrate)
+    #     else:
+    #         #flash_esptool_win_as_script(programmer, firmware, comport, baudrate)
+    #         flash_esptool(programmer, firmware, comport, baudrate)
 
-        return # done
+    #     return # done
 
     if 'appassthru' in programmer:
         flash_esptool_appassthru(programmer, serialx_no, firmware)
