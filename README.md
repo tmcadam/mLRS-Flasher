@@ -62,6 +62,7 @@ TBD
 
   - Install Python and make sure available on path.
   - Create a virtual environment in the repo `python3 -m venv venv`
+  - May also need to install Tkinter `sudo apt install python3-tk`
   - Activate the virtual environment `. venv\Scripts\activate`
   - Install dependencies `pip install -r requirements.txt`
   - Run `bash build_lin.sh` . The output will be in the `dist` folder, or...
