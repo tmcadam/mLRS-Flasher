@@ -19,6 +19,24 @@ mLRSFlasher is based on Python, and thus needs a full Python3 installation on yo
 
 ### MacOS ###
 
+
+### Ubuntu ###
+
+```
+sudo usermod -a -G dialout $USER
+sudo usermod -a -G tty $USER
+```
+
+```
+sudo tee /etc/udev/rules.d/49-stm32dfu.rules << 'EOF'
+SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="df11", MODE="0666"
+EOF
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+Todo: Make an install script for this
+
+
 #### Run the Flasher ####
 
 ````
@@ -37,11 +55,20 @@ TBD
   - Create a virtual environment in the repo `python.exe -m venv venv`
   - Activate the virtual environment `venv\Scripts\activate.bat`
   - Install dependencies `pip install -r requirements.txt`
-  - Run `build.bat` . The output will be in the `dist` folder, or...
+  - Run `build_win.bat` . The output will be in the `dist` folder, or...
   - Run `pyinstaller windows_exe.spec` or `pyinstaller windows_folder.spec`
+
+### Linux ###
+
+  - Install Python and make sure available on path.
+  - Create a virtual environment in the repo `python3 -m venv venv`
+  - Activate the virtual environment `. venv\Scripts\activate`
+  - Install dependencies `pip install -r requirements.txt`
+  - Run `bash build_lin.sh` . The output will be in the `dist` folder, or...
+  - Run `pyinstaller linux_bin.spec` or `pyinstaller linux_folder.spec`
+
 
 ## Disclaimer ##
 
 You of course use the app fully at your own risk.
-
 
