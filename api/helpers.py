@@ -37,7 +37,7 @@ CREATE_NO_WINDOW = 0x08000000
 
 def os_popen(args):
     print(f"Flashing binary via dfu-util...\n")
-    process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, creationflags=CREATE_NO_WINDOW,)
+    process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     for line in iter(process.stdout.readline, ''):
         print(line, end='')
     process.stdout.close()
@@ -106,9 +106,9 @@ def get_stm32programmer_path():
     if sys.platform.lower() == 'darwin':
         return os.path.join(base_path, 'stm32cubeprogrammer', 'mac', 'bin', 'STM32_Programmer_CLI')
     elif sys.platform.lower() == 'linux':
-        return os.path.join(base_path, 'stm32cubeprogrammer', 'linux', 'bin', 'STM32_Programmer_CLI')
+        return os.path.join(base_path, 'STM32CubeProgrammer', 'linux', 'bin', 'STM32_Programmer_CLI')
     else:
-        return os.path.join(base_path, 'stm32cubeprogrammer', 'win', 'bin', 'STM32_Programmer_CLI.exe')
+        return os.path.join(base_path, 'STM32CubeProgrammer', 'win', 'bin', 'STM32_Programmer_CLI.exe')
 
 def get_dfu_util_path():
     if getattr(sys, 'frozen', False):
