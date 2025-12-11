@@ -28,7 +28,7 @@ tools/venv/*
 *.pch
 
 # Compiled Dynamic libraries
-*.so
+#*.so
 # *.dylib
 #*.dll
 
