@@ -62,7 +62,7 @@ def execute_cli_command(ser, cmd, expected=None, timeout=1.0):
             break
     #resList = res.split(b'\r\n')
     #print(resList)
-    print(res)
+    print(res.decode('utf-8', errors='ignore').strip())
     if expected and not expected in res:
         return None
     return res
@@ -143,7 +143,7 @@ def open_passthrough(comport = None, baudrate = 115200, wirelessbridge = None):
 
     cmd = b'serialpassthrough rfmod 0 ' + str(baudrate).encode('utf-8') + b'\n'
     ser.write(cmd)
-    print(cmd)
+    print(cmd.decode('utf-8', errors='ignore').strip())
 
     time.sleep(0.5)
     ser.close()
