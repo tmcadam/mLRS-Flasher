@@ -169,26 +169,26 @@ def flash_esptool(programmer, firmware, comport, baudrate):
 #     os_popen(['python','mlrs_flasher_runner.py'])
 
 
-def flash_esptool_appassthru_win_as_script(programmer, serialx_no, firmware):
-    F = open(os.path.join('mlrs_flasher_runner.py'), 'w')
-    F.write('import os, time\n')
-    F.write('from mLRS_Flasher import _flash_esptool_argstr\n')
-    F.write('import apInitPassthru as appassthru\n')
-    F.write("print('opening passthru...')\n")
-    F.write('comport, baudrate = appassthru.mlrs_open_passthrough(None, 57600, ' + str(serialx_no) + ', ["nosysboot", "scripting"])\n')
-    F.write("print('waiting for 5 secs...')\n")
-    F.write('time.sleep(5.0)\n')
-    F.write("print('flashing...')\n")
-    F.write("ESP_Programmer = os.path.join('thirdparty','esptool','esptool.py')\n")
-    F.write('args = _flash_esptool_argstr('+_cvtstr(programmer)+', '+_cvtstr(firmware)+', comport, baudrate)\n')
-    F.write('os.system(ESP_Programmer + \' \' + args)\n')
-    F.write('print()\n')
-    F.write('print("*** DONE ***")\n')
-    F.write('print()\n')
-    F.write('print("Cheers, and have fun.")\n')
-    F.write('os.system("pause")\n')
-    F.close()
-    os_popen(['python','mlrs_flasher_runner.py'])
+# def flash_esptool_appassthru_win_as_script(programmer, serialx_no, firmware):
+#     F = open(os.path.join('mlrs_flasher_runner.py'), 'w')
+#     F.write('import os, time\n')
+#     F.write('from mLRS_Flasher import _flash_esptool_argstr\n')
+#     F.write('import apInitPassthru as appassthru\n')
+#     F.write("print('opening passthru...')\n")
+#     F.write('comport, baudrate = appassthru.mlrs_open_passthrough(None, 57600, ' + str(serialx_no) + ', ["nosysboot", "scripting"])\n')
+#     F.write("print('waiting for 5 secs...')\n")
+#     F.write('time.sleep(5.0)\n')
+#     F.write("print('flashing...')\n")
+#     F.write("ESP_Programmer = os.path.join('thirdparty','esptool','esptool.py')\n")
+#     F.write('args = _flash_esptool_argstr('+_cvtstr(programmer)+', '+_cvtstr(firmware)+', comport, baudrate)\n')
+#     F.write('os.system(ESP_Programmer + \' \' + args)\n')
+#     F.write('print()\n')
+#     F.write('print("*** DONE ***")\n')
+#     F.write('print()\n')
+#     F.write('print("Cheers, and have fun.")\n')
+#     F.write('os.system("pause")\n')
+#     F.close()
+#     os_popen(['python','mlrs_flasher_runner.py'])
 
 def flash_esptool_passthru(programmer, serialx_no, firmware):
     print('opening passthru...')
@@ -248,32 +248,6 @@ Internal Tx Module Flashing Tools
 --------------------------------------------------
 '''
 
-def flash_internal_elrs_tx_module_win_as_script(programmer, firmware, baudrate, wirelessbridge):
-    F = open(os.path.join('mlrs_flasher_runner.py'), 'w')
-    F.write('import os, time\n')
-    F.write('from mLRS_Flasher import _flash_esptool_argstr\n')
-    F.write('import edgetxInitPassthru as radio\n')
-    F.write('radioport = radio.open_passthrough(comport = None, baudrate = '+str(baudrate)+', wirelessbridge = '+str(wirelessbridge)+')\n')
-    F.write('print()\n')
-    F.write('print("*** 3. Flashing the internal Tx Module ***")\n')
-    F.write('print()\n')
-    F.write('print("The firmware to flash is:",'+_cvtstr(firmware)+')\n')
-    F.write("ESP_Programmer = os.path.join('thirdparty','esptool','esptool.py')\n")
-    F.write('args = _flash_esptool_argstr('+_cvtstr(programmer)+', '+_cvtstr(firmware)+', radioport, '+str(baudrate)+')\n')
-    F.write('os.system(ESP_Programmer + \' \' + args)\n')
-    F.write('print()\n')
-    F.write('print("*** DONE ***")\n')
-    F.write('print()\n')
-    F.write('print("Please remove the USB cable.")\n')
-    F.write('print("Cheers, and have fun.")\n')
-    F.write('os.system("pause")\n')
-    F.close()
-    os_popen(['python','mlrs_flasher_runner.py'])
-
-#flash_internal_elrs_tx_module_win_as_script('temp/tx-jumper-internal-900-v1.3.05-@28fe6be0.bin')
-#exit(1)
-
-
 def flash_internal_elrs_tx_module(programmer, firmware, baudrate, wirelessbridge):
     # firmware filename gives the complete path
     #print(filename)
@@ -296,18 +270,10 @@ def flash_internal_elrs_tx_module(programmer, firmware, baudrate, wirelessbridge
 
 
 def flashInternalElrsTxModule(programmer, firmware):
-    if os_system_run_as_script():
-        #print('run as script file')
-        flash_internal_elrs_tx_module_win_as_script('esp32', firmware, baudrate = 921600, wirelessbridge = False)
-        return # done
 
     flash_internal_elrs_tx_module('esp32', firmware, 921600, False)
 
 
 def flashInternalElrsTxModuleWirelessBridge(programmer, firmware):
-    if os_system_run_as_script():
-        #print('run as script file')
-        flash_internal_elrs_tx_module_win_as_script(programmer, firmware, baudrate = 115200, wirelessbridge = True)
-        return # done
 
     flash_internal_elrs_tx_module(programmer, firmware, 115200, True)
