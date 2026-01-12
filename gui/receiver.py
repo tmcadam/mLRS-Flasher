@@ -61,7 +61,7 @@ class ReceiverMixin:
                         cmd_in_output_window(flashDevice, 'stm32 dfu', key['url'], firmware_filename)
                     elif 'appassthru' in flashmethod:
                         serialx = self.fReceiver_Serialx_menu.get().lower()
-                        flashDevice('stm32 appassthru '+serialx, key['url'], firmware_filename)
+                        cmd_in_output_window(flashDevice, 'stm32 appassthru '+serialx, key['url'], firmware_filename)
                     elif 'uart' in flashmethod:
                         comport = self.fReceiver_ComPort_menu.get()
                         print('--->',comport)
@@ -86,7 +86,7 @@ class ReceiverMixin:
                     else: # 'esptool'
                         comport = self.fReceiver_ComPort_menu.get()
                         print('--->',comport)
-                        flash_in_output_window(chipset + ' no dtr', key['url'], firmware_filename, comport=comport, baudrate=921600)
+                        cmd_in_output_window(flashDevice, chipset + ' no dtr', key['url'], firmware_filename, comport=comport, baudrate=921600)
                     return
         print('ERROR: flashReceiverFirmware() [2]')
 
