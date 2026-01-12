@@ -8,6 +8,7 @@
 # 30. Nov. 2025 001
 #************************************************************
 
+import os
 import customtkinter as ctk
 from customtkinter import filedialog
 from gui.ctkinter_components import CTkFlashButton
