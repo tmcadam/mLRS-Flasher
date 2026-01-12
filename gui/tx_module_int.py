@@ -67,7 +67,7 @@ class TxModuleInternalMixin:
         else:
             firmware_filename = 'mlrs-wireless-bridge-esp8266.ino.bin'
         url = g_wirelessbridge_path_url + firmware_filename
-        flashDevice(programmer, url, firmware_filename)
+        cmd_in_output_window(flashDevice, programmer, url, firmware_filename)
 
 
     #--------------------------------------------------
